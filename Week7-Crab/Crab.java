@@ -25,8 +25,6 @@ public class Crab extends Animal
         width = image.getWidth();
         height = image.getHeight();
         image.scale((int)(width * 0.8), (int)(height * 0.8));
-        
-        setRotation(90);
     }
     
     /**
@@ -36,7 +34,7 @@ public class Crab extends Animal
      */
     public void act()
     {
-        move4Ways();  // or moveAndTurn
+        moveAndTurn();  // or moveAndTurn
     }
     
     /**
@@ -46,6 +44,20 @@ public class Crab extends Animal
      */
     public void moveAndTurn()
     {
+        if(Greenfoot.isKeyDown("left"))
+        {
+            turn(-turnAngle);
+        }
+        
+        if(Greenfoot.isKeyDown("right"))
+        {
+            turn(turnAngle);
+        }  
+        
+        if(Greenfoot.isKeyDown("space"))
+        {
+             move(speed);    
+        }         
     }
     
     /**
@@ -55,5 +67,33 @@ public class Crab extends Animal
      */
     public void move4Ways()
     {
+        int x = getX(); int y = getY();
+        int halfWidth = width / 2;
+        
+        if(Greenfoot.isKeyDown("left") && x > halfWidth)
+        {
+            setRotation(270);
+            x -= speed;
+        }
+        
+        if(Greenfoot.isKeyDown("right") && !isAtEdge())
+        {
+            setRotation(90);
+            x += speed;
+        }        
+        
+        if(Greenfoot.isKeyDown("down") && !isAtEdge())
+        {
+            setRotation(180);
+            y += speed;
+        } 
+        
+        if(Greenfoot.isKeyDown("up") && y > speed)
+        {
+            setRotation(0);
+            y -= speed;
+        }
+        
+        setLocation(x, y);        
     }
 }
