@@ -34,7 +34,8 @@ public class Crab extends Animal
      */
     public void act()
     {
-        turnAndMove();  // or moveAndTurn
+        turnAndMove(); 
+        eat(Worm.class);
     }
     
     /**
