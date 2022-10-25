@@ -34,7 +34,7 @@ public class Crab extends Animal
      */
     public void act()
     {
-        moveAndTurn();  // or moveAndTurn
+        turnAndMove();  // or moveAndTurn
     }
     
     /**
@@ -42,7 +42,7 @@ public class Crab extends Animal
      * left or to the right, and then the worm moves in that
      * direction
      */
-    public void moveAndTurn()
+    public void turnAndMove()
     {
         if(Greenfoot.isKeyDown("left"))
         {
